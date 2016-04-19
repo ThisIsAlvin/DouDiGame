@@ -1,5 +1,8 @@
 package com.example.DouDiGame.model;
 
+import com.example.DouDiGame.utils.Config;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,4 +19,19 @@ public class Game {
     public int userId;
     /*当前产生的随机数1-6*/
     public int num;
+
+    public Game(){
+        geziList = new ArrayList<Gezi>();
+        userList = new ArrayList<User>();
+        User user0 = new User();
+        User user1 = new User();
+        user0.setPosition(0);
+        user1.setPosition(1);
+        userList.add(0,user0);
+        userList.add(1,user1);
+        for (int i = 0; i < Config.gezi_total; i++) {
+            geziList.add(i,new Gezi());
+        }
+
+    }
 }
