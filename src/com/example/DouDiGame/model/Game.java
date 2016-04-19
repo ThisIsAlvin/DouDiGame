@@ -14,4 +14,6 @@ public class Game {
     public int time;
     /*存放操作权指向*/
     public int userId;
+    /*当前产生的随机数1-6*/
+    public int num;
 }
