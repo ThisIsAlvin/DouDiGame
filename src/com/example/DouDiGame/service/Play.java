@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by viv on 16-4-19.
  */
-public class Play {
+public  class Play {
     public Game game;
     public List<Gezi> geziList;
     public List<User> userList;
