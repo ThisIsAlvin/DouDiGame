@@ -9,35 +9,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d716a87-f2a5-4ca0-89a0-8a297f7f1b2f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/occupy0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/occupy1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/player0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/player1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/DouDiGame.apk" afterPath="$PROJECT_DIR$/out/production/DouDiGame/DouDiGame.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/DouDiGame.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/DouDiGame/DouDiGame.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/MyActivity.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/MyActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$drawable.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$id.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$layout.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$string.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/GameActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/testActivity$1.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/testActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/testActivity.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/activity/testActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/model/Game.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/model/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/model/Gezi.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/model/Gezi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/model/User.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/model/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/service/Play.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/service/Play.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/utils/Config.class" afterPath="$PROJECT_DIR$/out/production/DouDiGame/com/example/DouDiGame/utils/Config.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/DouDiGame/activity/GameActivity.java" afterPath="$PROJECT_DIR$/src/com/example/DouDiGame/activity/GameActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/DouDiGame/service/Play.java" afterPath="$PROJECT_DIR$/src/com/example/DouDiGame/service/Play.java" />
+    <list default="true" id="5d716a87-f2a5-4ca0-89a0-8a297f7f1b2f" name="Default" comment="合并内测1.0">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="DouDiGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,11 +83,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.5544043">
-              <caret line="568" column="44" selection-start-line="568" selection-start-column="44" selection-end-line="568" selection-end-column="44" />
+            <state vertical-scroll-proportion="-20.125">
+              <caret line="541" column="44" selection-start-line="541" selection-start-column="44" selection-end-line="541" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.08560794">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -177,8 +160,8 @@
         <option value="$PROJECT_DIR$/src/com/example/DouDiGame/model/Gezi.java" />
         <option value="$PROJECT_DIR$/src/com/example/DouDiGame/activity/testActivity.java" />
         <option value="$PROJECT_DIR$/src/com/example/DouDiGame/service/Play.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -372,20 +355,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DouDiGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DouDiGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -879,7 +848,7 @@
       <workItem from="1461039933777" duration="24079000" />
       <workItem from="1461130511065" duration="551000" />
       <workItem from="1461131452302" duration="129000" />
-      <workItem from="1461424975069" duration="149000" />
+      <workItem from="1461424975069" duration="378000" />
     </task>
     <task id="LOCAL-00001" summary="刚刚开始新建的项目">
       <created>1460980758686</created>
@@ -915,11 +884,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29238000" />
+    <option name="totallyTimeSpent" value="29467000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -932,7 +901,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10449321" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7324974" sideWeight="0.491453" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09404389" sideWeight="0.491453" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75339603" sideWeight="0.49358973" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23510972" sideWeight="0.58600426" order="7" side_tool="false" content_ui="tabs" x="916" y="504" width="826" height="429" />
@@ -1211,14 +1180,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05927835">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/DouDiGame/service/Play.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1253,8 +1214,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.5544043">
-          <caret line="568" column="44" selection-start-line="568" selection-start-column="44" selection-end-line="568" selection-end-column="44" />
+        <state vertical-scroll-proportion="-20.125">
+          <caret line="541" column="44" selection-start-line="541" selection-start-column="44" selection-end-line="541" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08560794">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
