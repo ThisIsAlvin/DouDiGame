@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DouDiGame.iml" filepath="$PROJECT_DIR$/DouDiGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DouDiGameServer/DouDiGameServer.iml" filepath="$PROJECT_DIR$/DouDiGameServer/DouDiGameServer.iml" />
     </modules>
   </component>
 </project>
