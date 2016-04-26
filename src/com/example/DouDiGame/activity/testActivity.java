@@ -24,7 +24,7 @@ public class testActivity extends Activity {
             @Override
             protected Void doInBackground(Void... params) {
 
-                Play play = new Play();
+               /* Play play = new Play();
 
                 Log.i("play_init","玩家0----> "+play.get_user(0).cash+":"+play.get_user(0).assets+":"+play.get_user(0).getPosition()+":"+play.get_user(0).direction);
                 Log.i("play_init","玩家1----> "+play.get_user(1).cash+":"+play.get_user(1).assets+":"+play.get_user(1).getPosition()+":"+play.get_user(1).direction);
@@ -110,6 +110,8 @@ public class testActivity extends Activity {
 
                 Log.i("go_test","================结束=====================");
 
+
+*/
 
 
 

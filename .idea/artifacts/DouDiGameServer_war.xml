@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DouDiGameServer:war">
+    <output-path>$PROJECT_DIR$/DouDiGameServer/target</output-path>
+    <root id="archive" name="DouDiGameServer.war">
+      <element id="artifact" artifact-name="DouDiGameServer:war exploded" />
+    </root>
+  </artifact>
+</component>

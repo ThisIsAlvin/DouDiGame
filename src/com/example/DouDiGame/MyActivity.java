@@ -3,6 +3,7 @@ package com.example.DouDiGame;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.example.DouDiGame.activity.socketTestActivity;
 import com.example.DouDiGame.activity.testActivity;
 
 import com.example.DouDiGame.activity.MainActivity;
@@ -17,8 +18,8 @@ public class MyActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aaa);
-        Intent MyIntent=new Intent(MyActivity.this,MainActivity.class);
+        Intent MyIntent=new Intent(MyActivity.this,socketTestActivity.class);
         startActivity(MyIntent);
-
+        finish();
     }
 }
