@@ -3,14 +3,13 @@ package com.example.DouDiGame.activity;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import com.example.DouDiGame.Config;
 import com.example.DouDiGame.R;
-import com.example.DouDiGame.model.Message;
+import com.example.DouDiGame.netEntity.Message;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -37,29 +36,86 @@ public class socketTestActivity extends Activity {
             protected Void doInBackground(Void... params) {
 
                 try {
-                    socket = new Socket("192.168.1.103",10801);
+                    socket = new Socket(Config.IP,Config.PORT);
 
-                    writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8"));
+                    writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),Config.ENCODE));
 
-                    Message message = new Message();
-                    message.setFoWhat("登录");
-                    message.setDoSomething("我来了");
+                    reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), Config.ENCODE));
+
                     ObjectMapper mapper = new ObjectMapper();
-                    String json = mapper.writeValueAsString(message);
 
-                    for(int i=0; i<10;i++){
-                        writer.write(json+"\n");
-                        writer.flush();
+                    String line;
+                    Message message;
+                    /*登录*/
+                    message  = new Message();
+                    message.setForWhat(Config.LOGIN);
+                    message.setData("大哥");
+                    line = mapper.writeValueAsString(message);
+                    writer.write(line + "\n");
+                    writer.flush();
+
+                    line =  reader.readLine();
+                    if(line != null){
+                        Log.i("viv",line);
                     }
+
+                    /*新建房间并进入*/
+                    message = new Message();
+                    message.setForWhat(Config.NEW_ROOM);
+                    message.setData("丽晶大宾馆");
+                    line = mapper.writeValueAsString(message);
+                    writer.write(line + "\n");
+                    writer.flush();
+
+                    line = reader.readLine();
+                    if (line != null) {
+                        Log.i("viv",line);
+                    }
+                    /*获取大厅数据*/
+                    message = new Message();
+                    message.setForWhat(Config.HALL);
+                    line = mapper.writeValueAsString(message);
+                    writer.write(line + "\n");
+                    writer.flush();
+
+                    line = reader.readLine();
+                    if (line != null) {
+                        Log.i("viv",line);
+                    }
+
+                    /*获取某个房间数据*/
+                    message = new Message();
+                    message.setForWhat(Config.GET_ROOM);
+                    message.setData("丽晶大宾馆");
+                    line = mapper.writeValueAsString(message);
+                    writer.write(line + "\n");
+                    writer.flush();
+
+                    line = reader.readLine();
+                    if (line != null) {
+                        Log.i("viv",line);
+                    }
+                    /*进入某个房间*/
+                    message = new Message();
+                    message.setForWhat(Config.IN_ROOM);
+                    message.setData("丽晶大宾馆");
+                    line = mapper.writeValueAsString(message);
+                    writer.write(line + "\n");
+                    writer.flush();
+
+                    line = reader.readLine();
+                    if (line != null) {
+                        Log.i("viv",line);
+                    }
+
+
+
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                }finally {
-                    try {
-                        writer.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                } finally {
+
                 }
 
                 return null;

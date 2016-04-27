@@ -23,7 +23,7 @@ public class ServerListener extends  Thread {
                 /*实例化一个GamePlayer,启动这个子线程,将这个Gameplayer添加到SocketManager中管理*/
                 GamePlayer gamePlayer = new GamePlayer(socket);
                 gamePlayer.start();
-                SocketManager.getSocketManager().login(gamePlayer);
+                SocketManager.getSocketManager().connect(gamePlayer);
 
             }
         }catch (IOException e){
