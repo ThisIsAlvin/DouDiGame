@@ -5,6 +5,7 @@ import com.viv.server.netEntity.GameMessage;
 import com.viv.server.netEntity.InitMessage;
 import com.viv.server.netEntity.Message;
 import com.viv.server.service.GamePlayer;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,6 +45,10 @@ public class Room {
         /*判断该玩家不在这个房间*/
         if (!players.contains(gamePlayer)) {
             players.add(gamePlayer);
+            /*通知房间所有用户更新房间数据*/
+            Message message = new Message();
+            message.setForWhat(Config.ROOMER_UPDATE_ROOM);
+            notifyAllPlayer(message);
         }
     }
 
@@ -52,6 +57,10 @@ public class Room {
         /*判断该玩家在这个房间*/
         if (players.contains(gamePlayer)) {
             players.remove(gamePlayer);
+             /*通知房间所有用户更新房间数据*/
+            Message message = new Message();
+            message.setForWhat(Config.ROOMER_UPDATE_ROOM);
+            notifyAllPlayer(message);
         }
     }
 
@@ -64,9 +73,11 @@ public class Room {
     public void notifyAllPlayer(Message message) {
         String forWhat = message.getForWhat();
         String line = null;
+        ObjectMapper mapper = new ObjectMapper();
         try{
         switch (forWhat){
             case Config.START_GAME_RESULT:{
+                /*初始化游戏数据*/
                 InitMessage init = new InitMessage();
                 ArrayList<String> arrayList =new ArrayList<>();
                 init.setGameTime(gameData.time);
@@ -85,9 +96,10 @@ public class Room {
                     player.setDealer(gameData.dealPlayer.playerName);
                     for (int j = 0; j < gameData.gameGezis.size(); j++) {
                         if (gameData.gameGezis.get(j).roomPlayers.size()>=1) {
-                            gameData.gameGezis.get(j).roomPlayers.get(0).playerName.equals(player.getPlayerName());
-                            player.setAddress(j);
-                            break;
+                            if (gameData.gameGezis.get(j).roomPlayers.get(0).playerName.equals(player.getPlayerName())) {
+                                player.setAddress(j);
+                                break;
+                            }
                         }
                     }
                         String player_json = players.get(i).mapper.writeValueAsString(player);
@@ -95,6 +107,16 @@ public class Room {
                 }
                 line = players.get(0).mapper.writeValueAsString(init);
                 System.out.println(line);
+                for (GamePlayer gp :
+                        players) {
+                    gp.bw.write(line + "\n");
+                    gp.bw.flush();
+                }
+                break;
+            }
+            case Config.ROOMER_UPDATE_ROOM:{
+                /*通知房间用户更新房间数据*/
+                line = mapper.writeValueAsString(message);
                 for (GamePlayer gp :
                         players) {
                     gp.bw.write(line + "\n");

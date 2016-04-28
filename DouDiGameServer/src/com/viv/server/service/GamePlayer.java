@@ -10,7 +10,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 /**
@@ -74,8 +73,8 @@ public class GamePlayer extends Thread{
                             break;
                         }
                         case Config.START_GAME:{
-                            /*开始游戏*/
-                            start_game();
+                            /*开始游戏数据初始化*/
+                            start_gameData_init();
                             break;
                         }
                         default:
@@ -177,14 +176,8 @@ public class GamePlayer extends Thread{
         try{
             /*判断用户是否登录却未开始游戏*/
             if (manager.getWait().contains(this)) {
-                /*判断用户是否还有房间没有退出，帮他退出之前的房间*/
-                Vector<Room> rooms = manager.getRooms();
-                for (Room r :
-                        rooms) {
-                    if (r.getPlayers().contains(this)) {
-                        r.remotePlayers(this);
-                    }
-                }
+                /*帮他退出之前的房间*/
+                manager.outRoom(this);
                 /*进入房间*/
                 manager.inRoom(this,message.getData());
 
@@ -193,6 +186,8 @@ public class GamePlayer extends Thread{
                 line = mapper.writeValueAsString(message);
                 bw.write(line + "\n");
                 bw.flush();
+
+
             }
 
         }catch (IOException e) {
@@ -297,8 +292,8 @@ public class GamePlayer extends Thread{
 
     }
 
-    /*开始游戏*/
-    private void start_game() {
+    /*开始游戏数据初始化*/
+    private void start_gameData_init() {
         System.out.println("开始游戏："+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
         String roomName = message.getData();

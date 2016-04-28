@@ -25,8 +25,10 @@ public class Config {
     public static final String NEW_ROOM = "newRoom";
     /*获取某个房间数据*/
     public static final String GET_ROOM = "getRoom";
-    /*开始游戏*/
+    /*开始游戏数据初始化*/
     public static final String START_GAME = "startGame";
+    /*获取游戏初始化数据*/
+    public static final String START_INIT_DATA = "startInitData";
     /*投掷色子*/
     public static final String PLAY = "play";
     /*游戏操作：购买土地/追加投资/扣钱*/
@@ -43,12 +45,20 @@ public class Config {
     public static final String NEW_ROOM_RESULT = "new_room_result";
     /*返回某个房间数据*/
     public static final String GET_ROOM_RESULT = "get_room_result";
-    /*开始游戏结果*/
+    /*开始游戏数据初始化结果*/
     public static final String START_GAME_RESULT = "start_game_result";
+    /*获取游戏初始化数据结果*/
+    public static final String START_INIT_DATA_RESULT = "start_init_data_result";
     /*投掷色子结果*/
     public static final String PLAY_RESULT = "play_result";
     /*游戏操作结果*/
     public static final String DEAL_RESULT = "deal_result";
+
+    /*forWhat常用的通知 server----> client*/
+    /*所有等待的用户更新大厅数据*/
+    public static final String WAITER_UPDATE_HALL = "waiter_update_hall";
+    /*向房间的玩家发出更新房间数据的通知*/
+    public static final String ROOMER_UPDATE_ROOM = "roomer_update_room";
 
 
     /*doSomething常用通知*/
