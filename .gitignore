@@ -1,0 +1,12 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea/
+.idea/workspace.xml
+*.iml
+out/
+gen/
+*.apk
+*.class
+# Created by .ignore support plugin (hsz.mobi)
