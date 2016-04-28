@@ -116,6 +116,7 @@ public class GamePlayer extends Thread{
             line = mapper.writeValueAsString(message);
             bw.write(line+"\n");
             bw.flush();
+                System.out.println(line);
 
         }else {
                 message = new Message();
@@ -163,6 +164,7 @@ public class GamePlayer extends Thread{
                 line = mapper.writeValueAsString(message);
                 bw.write(line + "\n");
                 bw.flush();
+                System.out.println(line);
 
         }else {
                 message = new Message();
@@ -197,6 +199,7 @@ public class GamePlayer extends Thread{
                     line = mapper.writeValueAsString(message);
                     bw.write(line + "\n");
                     bw.flush();
+                    System.out.println(line);
                 }
             }
 
@@ -242,6 +245,7 @@ public class GamePlayer extends Thread{
                 line = mapper.writeValueAsString(message);
                 bw.write(line+"\n");
                 bw.flush();
+                System.out.println(line);
             } else {
             message.setDoSomething(Config.FAIL);
             line = mapper.writeValueAsString(message);
@@ -285,6 +289,7 @@ public class GamePlayer extends Thread{
                         line = mapper.writeValueAsString(message);
                         bw.write(line + "\n");
                         bw.flush();
+                        System.out.println(line);
                         return;
                     }
                 }
@@ -375,6 +380,7 @@ public class GamePlayer extends Thread{
                             line = mapper.writeValueAsString(message);
                             bw.write(line + "\n");
                             bw.flush();
+                            System.out.println(line);
                             break;
                         }
                     }
@@ -400,6 +406,7 @@ public class GamePlayer extends Thread{
                 line = mapper.writeValueAsString(message);
                 bw.write(line + "\n");
                 bw.flush();
+                System.out.println(line);
             }
         }catch (IOException e) {
             e.printStackTrace();
