@@ -9,6 +9,8 @@ import java.util.List;
 public class ClassRoom{
     private String roomName;
     private ArrayList<String> players;
+    private String room_status;
+
 
     public ArrayList<String> getPlayers() {
         return players;
@@ -16,6 +18,14 @@ public class ClassRoom{
 
     public void setPlayers(ArrayList<String> players) {
         this.players = players;
+    }
+
+    public String getRoom_status() {
+        return room_status;
+    }
+
+    public void setRoom_status(String room_status) {
+        this.room_status = room_status;
     }
 
     public String getRoomName() {
@@ -31,6 +41,7 @@ public class ClassRoom{
         return "ClassRoom{" +
                 "players=" + players +
                 ", roomName='" + roomName + '\'' +
+                ", room_status='" + room_status + '\'' +
                 '}';
     }
 }

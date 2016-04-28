@@ -1,5 +1,6 @@
 package com.viv.server.controller;
 
+import com.viv.server.Config;
 import com.viv.server.entity.Room;
 import com.viv.server.service.GamePlayer;
 
@@ -42,8 +43,14 @@ public class SocketManager {
     }
 
     /*在房间中的玩家开始游戏*/
-    public void wait2playing() {
+    public void wait2playing(Vector<GamePlayer> gamePlayers) {
         synchronized (GamePlayer.class) {
+            for (GamePlayer g :
+                    gamePlayers) {
+                if (wait.remove(g)) {
+                    playing.add(g);
+                }
+            }
 
         }
 
@@ -77,12 +84,11 @@ public class SocketManager {
         synchronized (GamePlayer.class) {
             for (Room r :
                     rooms) {
-                if (r.getRoomName().equals(roomName)) {
+                if (r.getRoomName().equals(roomName) && r.getGameData().roomStatus.equals(Config.ROOM_WAIT)) {
                     r.addPlayers(gamePlayer);
                     return;
                 }
             }
-
         }
 
     }
@@ -95,21 +101,21 @@ public class SocketManager {
 
     }
 
-    /*获取connect克隆对象*/
+    /*获取connect克隆对象！！！！！！！！注意只是浅拷贝*/
     public Vector<GamePlayer> getConnect() {
         return (Vector<GamePlayer>) connect.clone();
     }
 
-    /*获取wait克隆对象*/
+    /*获取wait克隆对象！！！！！！！！注意只是浅拷贝*/
     public Vector<GamePlayer> getWait() {
         return (Vector<GamePlayer>) wait.clone();
     }
 
-    /*获取playing克隆对象*/
+    /*获取playing克隆对象！！！！！！！！注意只是浅拷贝*/
     public Vector<GamePlayer> getPlaying() {
         return (Vector<GamePlayer>) playing.clone();
     }
-    /*获取rooms克隆对象*/
+    /*获取rooms克隆对象！！！！！！！！注意只是浅拷贝*/
     public Vector<Room> getRooms(){
         return (Vector<Room>) rooms.clone();
     }

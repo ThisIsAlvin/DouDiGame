@@ -18,10 +18,9 @@ import java.util.Vector;
  */
 public class GamePlayer extends Thread{
     Socket socket;
-//    PlayerStatus playerStatus = PlayerStatus.CONNECT;
-    Room room;
+    public Room room;
     SocketManager manager;
-    String playerName;
+    public String playerName;
 
 
     public GamePlayer(Socket socket){
@@ -30,9 +29,9 @@ public class GamePlayer extends Thread{
         this.mapper = new ObjectMapper();
     }
 
-    BufferedReader br;
-    BufferedWriter bw;
-    ObjectMapper mapper;
+    public BufferedReader br;
+    public BufferedWriter bw;
+    public ObjectMapper mapper;
     Message message;
     String line;
 
@@ -47,6 +46,7 @@ public class GamePlayer extends Thread{
                 while ((line = br.readLine()) != null){
                     message = mapper.readValue(line,Message.class);
                     System.out.println("forWhat---->"+message.getForWhat());
+                    System.out.println(line);
                     switch (message.getForWhat()){
                         case Config.LOGIN:{
                             /*登录操作处理*/
@@ -71,6 +71,12 @@ public class GamePlayer extends Thread{
                         case Config.GET_ROOM:{
                             /*获取某个房间数据*/
                             get_room();
+                            break;
+                        }
+                        case Config.START_GAME:{
+                            /*开始游戏*/
+                            start_game();
+                            break;
                         }
                         default:
                             break;
@@ -115,7 +121,7 @@ public class GamePlayer extends Thread{
     }
 
     /*获取大厅数据*/
-    public void getHall() {
+    private void getHall() {
         System.out.println("大厅欢迎你:"+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
         try {
@@ -128,6 +134,7 @@ public class GamePlayer extends Thread{
                 for (int i = 0; i < roomSize; i++) {
                     classRoom = new ClassRoom();
                     classRoom.setRoomName(room.get(i).getRoomName());
+                    classRoom.setRoom_status(room.get(i).getGameData().roomStatus);
                     ArrayList<String> players = new ArrayList<String>();
                     for (GamePlayer gameplayer :
                         room.get(i).getPlayers()) {
@@ -164,7 +171,7 @@ public class GamePlayer extends Thread{
     }
 
     /*进入房间*/
-    public void in_room(){
+    private void in_room(){
         System.out.println("进入房间:"+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
         try{
@@ -194,7 +201,7 @@ public class GamePlayer extends Thread{
     }
 
     /*创建房间*/
-    public void new_room(){
+    private void new_room(){
         System.out.println("创建房间："+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
         try {
@@ -260,6 +267,7 @@ public class GamePlayer extends Thread{
                         message.setDoSomething(Config.SUCCESS);
 
                         classRoom.setRoomName(r.getRoomName());
+                        classRoom.setRoom_status(r.getGameData().roomStatus);
                         players = r.getPlayers();
                         ArrayList<String> playerList = new ArrayList<String>();
                         for (GamePlayer p :
@@ -286,6 +294,60 @@ public class GamePlayer extends Thread{
         }catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    /*开始游戏*/
+    private void start_game() {
+        System.out.println("开始游戏："+message.getDoSomething()+"； 数据："+message.getData());
+        System.out.println("----------------------");
+        String roomName = message.getData();
+        message = new Message();
+        try{
+            /*判断用户是否登录并且没有开始游戏*/
+            if (manager.getWait().contains(this)) {
+                /*判断房间是否存在*/
+                /*判断是否是房主*/
+                /*检查房间人数是否两人或以上*/
+                String result = null;
+                Vector<Room> rooms = manager.getRooms();
+                int i = 0;
+                for (i = 0; i < rooms.size(); i++) {
+                    result = "房间不存在";
+                    if (rooms.get(i).getRoomName().equals(roomName)) {
+                        result ="你不是房主";
+                        if (rooms.get(i).getPlayers().get(0).playerName.equals(playerName)) {
+                            result = "房间人数至少2个";
+                            if (rooms.get(i).getPlayers().size() >= 2) {
+                                  /*更改每个玩家的状态为playing*/
+                                manager.wait2playing(rooms.get(i).getPlayers());
+                                     /*初始化游戏数据*/
+                                rooms.get(i).getGameData().initGameData();
+                                /*通知房间玩家开始游戏*/
+                                message.setForWhat(Config.START_GAME_RESULT);
+                                message.setDoSomething(Config.SUCCESS);
+                                rooms.get(i).notifyAllPlayer(message);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (i == rooms.size()) {
+                    /*不存在这个房间或者不是房主操作或者人数不够*/
+                    message.setForWhat(Config.START_GAME_RESULT);
+                    message.setDoSomething(Config.FAIL);
+                    message.setData(result);
+                    line = mapper.writeValueAsString(message);
+                    bw.write(line + "\n");
+                    bw.flush();
+                    return;
+                }
+
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

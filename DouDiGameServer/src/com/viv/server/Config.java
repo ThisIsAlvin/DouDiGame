@@ -56,4 +56,30 @@ public class Config {
     public static final String SUCCESS = "success";
     /*失败*/
     public static final String FAIL = "fail";
+
+
+    /*房间状态*/
+    /*等待*/
+    public static final String ROOM_WAIT = "room_wait";
+    /*游戏中*/
+    public static final String ROOM_PLAYING = "room_playing";
+
+    /*角色行走方向*/
+    /*右转*/
+    public static final String DIRECTION_RIGHT = "direction_right";
+    /*左转*/
+    public static final String DIRECTION_LEFT = "direction_left";
+
+    /*游戏的初始信息*/
+    /*地图的格子数量*/
+    public static final Integer GEZHI_NUM = 60;
+    /*初始时，玩家的现金*/
+    public static final Integer PLAYER_PRICE = 10000;
+    /*初始时，格子土地的价值*/
+    public static final Integer GEZHI_PRICE = 100;
+    /*格子每个回合的涨幅*/
+    public static final double GEZHI_RATE = 0.1;
+    /*游戏最大回合数*/
+    public static final Integer GAME_TIME = 30;
+
 }

@@ -56,4 +56,11 @@ public class Config {
     public static final String SUCCESS = "success";
     /*失败*/
     public static final String FAIL = "fail";
+
+
+    /*房间状态*/
+    /*等待*/
+    public static final String ROOM_WAIT = "room_wait";
+    /*游戏中*/
+    public static final String ROOM_PLAYING = "room_playing";
 }
