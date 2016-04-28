@@ -11,11 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d716a87-f2a5-4ca0-89a0-8a297f7f1b2f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/Config.java" afterPath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/controller/SocketManager.java" afterPath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/controller/SocketManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/entity/Room.java" afterPath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/entity/Room.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/service/GamePlayer.java" afterPath="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/service/GamePlayer.java" />
     </list>
     <ignored path="DouDiGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -233,10 +230,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Room.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/entity/Room.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62750334">
+            <state vertical-scroll-proportion="0.0">
               <caret line="123" column="17" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="17" />
               <folding>
                 <element signature="e#680#681#0" expanded="true" />
@@ -244,6 +241,16 @@
                 <element signature="e#1771#1772#0" expanded="true" />
                 <element signature="e#1830#1831#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.05950841">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -307,7 +314,6 @@
         <option value="$PROJECT_DIR$/src/com/example/DouDiGame/model/Gezi.java" />
         <option value="$PROJECT_DIR$/src/com/example/DouDiGame/service/Play.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/StartServer.java" />
         <option value="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/ServerListener.java" />
@@ -339,6 +345,7 @@
         <option value="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/service/GamePlayer.java" />
         <option value="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/controller/SocketManager.java" />
         <option value="$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/entity/Room.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -982,7 +989,7 @@
       <workItem from="1461634778272" duration="12575000" />
       <workItem from="1461684672794" duration="3988000" />
       <workItem from="1461717381678" duration="40053000" />
-      <workItem from="1461805246654" duration="21453000" />
+      <workItem from="1461805246654" duration="21766000" />
     </task>
     <task id="LOCAL-00001" summary="刚刚开始新建的项目">
       <created>1460980758686</created>
@@ -1044,11 +1051,17 @@
       <option name="project" value="LOCAL" />
       <updated>1461821247901</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="服务端添加了进出房间，创删房间，对相应用户的通知功能">
+      <created>1461836064830</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1461836064830</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118433000" />
+    <option name="totallyTimeSpent" value="118746000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1061,7 +1074,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1073,10 +1086,10 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18495297" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4785789" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10449321" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7711599" sideWeight="0.491453" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1598746" sideWeight="0.491453" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36572623" sideWeight="0.49358973" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23510972" sideWeight="0.58600426" order="10" side_tool="false" content_ui="tabs" x="916" y="504" width="826" height="429" />
@@ -1084,7 +1097,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08440171" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16826923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="761" y="51" width="377" height="893" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16826923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="761" y="51" width="377" height="893" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.49358973" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1117,7 +1130,8 @@
     <MESSAGE value="maven添加了jackson支持&#10;写了客户端到服务器socket传输json的demo" />
     <MESSAGE value="完成了服务器端登录，获取大厅数据，进入房间，创建房间，获取房间数据的功能，并做了相应测试。" />
     <MESSAGE value="完成了服务器端初始化数据并通知客户端更新数据。" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成了服务器端初始化数据并通知客户端更新数据。" />
+    <MESSAGE value="服务端添加了进出房间，创删房间，对相应用户的通知功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="服务端添加了进出房间，创删房间，对相应用户的通知功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1330,14 +1344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1585,7 +1591,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DouDiGameServer/src/com/viv/server/entity/Room.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62750334">
+        <state vertical-scroll-proportion="0.0">
           <caret line="123" column="17" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="17" />
           <folding>
             <element signature="e#680#681#0" expanded="true" />
@@ -1593,6 +1599,14 @@
             <element signature="e#1771#1772#0" expanded="true" />
             <element signature="e#1830#1831#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05950841">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

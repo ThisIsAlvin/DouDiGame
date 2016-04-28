@@ -1,3 +1,5 @@
 #所要忽略的文件
-/.idea/workspace.xml
-/out/*
+.idea/
+.idea/workspace.xml
+*.iml
+out/
