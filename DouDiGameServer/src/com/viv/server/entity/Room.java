@@ -18,6 +18,7 @@ public class Room {
     private String roomName;
     private GameData gameData;
     private Vector<GamePlayer> players;
+    public String initDataJson = null;
 
     public Room() {
         this.players = new Vector<GamePlayer>();
@@ -102,11 +103,15 @@ public class Room {
                             }
                         }
                     }
-                        String player_json = players.get(i).mapper.writeValueAsString(player);
+                        String player_json = mapper.writeValueAsString(player);
                         init.getPlayers().add(player_json);
                 }
-                line = players.get(0).mapper.writeValueAsString(init);
-                System.out.println(line);
+                initDataJson = mapper.writeValueAsString(init);
+                System.out.println(initDataJson);
+                message.setForWhat(Config.START_GAME_RESULT);
+                message.setDoSomething(Config.SUCCESS);
+                /*通知房间所有玩家来获取初始化数据*/
+                line = mapper.writeValueAsString(message);
                 for (GamePlayer gp :
                         players) {
                     gp.bw.write(line + "\n");

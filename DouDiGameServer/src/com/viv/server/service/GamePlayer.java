@@ -77,6 +77,16 @@ public class GamePlayer extends Thread{
                             start_gameData_init();
                             break;
                         }
+                        case Config.START_INIT_DATA:{
+                            /*获取游戏初始化数据*/
+                            get_init_data();
+                            break;
+                        }
+                        case Config.OUT_ROOM:{
+                            /*退出房间操作*/
+                            out_room();
+                            break;
+                        }
                         default:
                             break;
                     }
@@ -91,11 +101,12 @@ public class GamePlayer extends Thread{
     private void login(){
         System.out.println("登录玩家："+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
+        String player_name = message.getData();
         try {
             /*判断用户是否链接却未登录*/
             if (manager.getConnect().contains(this)){
             /*记录用户名*/
-                playerName = message.getData();
+                playerName = player_name;
             /*将用户从connect---->wait*/
                 manager.connect2wait(this);
 
@@ -173,21 +184,20 @@ public class GamePlayer extends Thread{
     private void in_room(){
         System.out.println("进入房间:"+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
+        String roomName = message.getData();
         try{
             /*判断用户是否登录却未开始游戏*/
             if (manager.getWait().contains(this)) {
                 /*帮他退出之前的房间*/
                 manager.outRoom(this);
                 /*进入房间*/
-                manager.inRoom(this,message.getData());
-
-                message.setForWhat(Config.IN_ROOM_RESULT);
-                message.setDoSomething(Config.SUCCESS);
-                line = mapper.writeValueAsString(message);
-                bw.write(line + "\n");
-                bw.flush();
-
-
+                if ( manager.inRoom(this,roomName)) {
+                    message.setForWhat(Config.IN_ROOM_RESULT);
+                    message.setDoSomething(Config.SUCCESS);
+                    line = mapper.writeValueAsString(message);
+                    bw.write(line + "\n");
+                    bw.flush();
+                }
             }
 
         }catch (IOException e) {
@@ -199,12 +209,12 @@ public class GamePlayer extends Thread{
     private void new_room(){
         System.out.println("创建房间："+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
+        String roomName = message.getData();
         try {
         /*判断用户是否登录却未开始游戏*/
             if(manager.getWait().contains(this)){
                 /*判断房间名是否已经存在*/
                 Vector<Room> rooms = manager.getRooms();
-                String roomName = message.getData();
                 for (Room r :
                         rooms) {
                     if (roomName.equals(r.getRoomName())) {
@@ -247,11 +257,11 @@ public class GamePlayer extends Thread{
     private void get_room() {
         System.out.println("房间数据："+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
+        String roomName = message.getData();
         try{
             /*判断用户是否登录并且没有开始游戏*/
             if (manager.getWait().contains(this)) {
                 Vector<Room> rooms = manager.getRooms();
-                String roomName = message.getData();
                 message = new Message();
                 ClassRoom classRoom = new ClassRoom();
                 Vector<GamePlayer> players;
@@ -294,7 +304,7 @@ public class GamePlayer extends Thread{
 
     /*开始游戏数据初始化*/
     private void start_gameData_init() {
-        System.out.println("开始游戏："+message.getDoSomething()+"； 数据："+message.getData());
+        System.out.println("初始化游戏："+message.getDoSomething()+"； 数据："+message.getData());
         System.out.println("----------------------");
         String roomName = message.getData();
         message = new Message();
@@ -342,7 +352,58 @@ public class GamePlayer extends Thread{
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    /*获取游戏初始化数据*/
+    private void get_init_data(){
+        System.out.println("获取初始化游戏数据："+message.getDoSomething()+"； 数据："+message.getData());
+        System.out.println("----------------------");
+        String roomName = message.getData();
+        message = new Message();
+        try{
+            /*判断用户是否开始游戏*/
+            if (manager.getPlaying().contains(this)) {
+                /*判断游戏初始化数据是否存在*/
+                Vector<Room> rooms = manager.getRooms();
+                for (Room r :
+                        rooms) {
+                    if (r.getRoomName().equals(roomName)) {
+                        if (r.getPlayers().contains(this) && r.initDataJson != null) {
+                            message.setForWhat(Config.START_INIT_DATA_RESULT);
+                            message.setDoSomething(Config.SUCCESS);
+                            message.setData(r.initDataJson);
+                            line = mapper.writeValueAsString(message);
+                            bw.write(line + "\n");
+                            bw.flush();
+                            break;
+                        }
+                    }
+                }
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*处理退出房间操作*/
+    private void out_room() {
+        System.out.println("退出房间："+message.getDoSomething()+"； 数据："+message.getData());
+        System.out.println("----------------------");
+        message = new Message();
+        try{
+            /*判断用户是否登录却未开始游戏*/
+            if (manager.getWait().contains(this)) {
+                /*帮他退出之前的房间*/
+                manager.outRoom(this);
+                message.setForWhat(Config.OUT_ROOM_RESULT);
+                message.setDoSomething(Config.SUCCESS);
+                line = mapper.writeValueAsString(message);
+                bw.write(line + "\n");
+                bw.flush();
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

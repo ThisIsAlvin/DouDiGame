@@ -29,6 +29,8 @@ public class Config {
     public static final String START_GAME = "startGame";
     /*获取游戏初始化数据*/
     public static final String START_INIT_DATA = "startInitData";
+    /*退出房间操作*/
+    public static final String OUT_ROOM = "outRoom";
     /*投掷色子*/
     public static final String PLAY = "play";
     /*游戏操作：购买土地/追加投资/扣钱*/
@@ -49,6 +51,8 @@ public class Config {
     public static final String START_GAME_RESULT = "start_game_result";
     /*获取游戏初始化数据结果*/
     public static final String START_INIT_DATA_RESULT = "start_init_data_result";
+    /*退出房间操作结果*/
+    public static final String OUT_ROOM_RESULT = "out_room_result";
     /*投掷色子结果*/
     public static final String PLAY_RESULT = "play_result";
     /*游戏操作结果*/

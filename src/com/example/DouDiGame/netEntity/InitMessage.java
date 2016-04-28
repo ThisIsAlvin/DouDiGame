@@ -1,4 +1,4 @@
-package com.viv.server.netEntity;
+package com.example.DouDiGame.netEntity;
 
 import java.util.ArrayList;
 

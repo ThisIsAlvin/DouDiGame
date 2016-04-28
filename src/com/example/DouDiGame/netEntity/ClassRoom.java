@@ -10,20 +10,13 @@ public class ClassRoom {
     private ArrayList<String> players;
     private String room_status;
 
+
     public ArrayList<String> getPlayers() {
         return players;
     }
 
     public void setPlayers(ArrayList<String> players) {
         this.players = players;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
     }
 
     public String getRoom_status() {
@@ -34,12 +27,11 @@ public class ClassRoom {
         this.room_status = room_status;
     }
 
-    @Override
-    public String toString() {
-        return "ClassRoom{" +
-                "players=" + players +
-                ", roomName='" + roomName + '\'' +
-                ", room_status='" + room_status + '\'' +
-                '}';
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

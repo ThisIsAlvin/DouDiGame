@@ -37,12 +37,4 @@ public class Message {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "data='" + data + '\'' +
-                ", forWhat='" + forWhat + '\'' +
-                ", doSomething='" + doSomething + '\'' +
-                '}';
-    }
 }

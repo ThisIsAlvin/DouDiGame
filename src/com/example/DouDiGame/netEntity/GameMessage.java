@@ -1,4 +1,4 @@
-package com.viv.server.netEntity;
+package com.example.DouDiGame.netEntity;
 
 /**
  * Created by viv on 16-4-28.

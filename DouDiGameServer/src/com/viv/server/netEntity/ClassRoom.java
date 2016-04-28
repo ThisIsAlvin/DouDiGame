@@ -36,12 +36,4 @@ public class ClassRoom{
         this.roomName = roomName;
     }
 
-    @Override
-    public String toString() {
-        return "ClassRoom{" +
-                "players=" + players +
-                ", roomName='" + roomName + '\'' +
-                ", room_status='" + room_status + '\'' +
-                '}';
-    }
 }

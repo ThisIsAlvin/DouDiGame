@@ -90,15 +90,16 @@ public class SocketManager {
     }
 
     /*玩家加入房间*/
-    public void inRoom(GamePlayer gamePlayer,String  roomName) {
+    public boolean inRoom(GamePlayer gamePlayer,String  roomName) {
         synchronized (GamePlayer.class) {
             for (Room r :
                     rooms) {
                 if (r.getRoomName().equals(roomName) && r.getGameData().roomStatus.equals(Config.ROOM_WAIT)) {
                     r.addPlayers(gamePlayer);
-                    return;
+                    return true;
                 }
             }
+            return false;
         }
 
     }
@@ -114,6 +115,7 @@ public class SocketManager {
                     if (r.getPlayers().size()==0) {
                         deleteRoom(r);
                     }
+                    break;
                 }
             }
         }
