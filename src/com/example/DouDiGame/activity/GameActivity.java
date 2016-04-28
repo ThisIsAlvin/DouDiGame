@@ -237,13 +237,6 @@ public class GameActivity extends Activity implements View.OnClickListener
         }
     }
 
-  /*  public void onClick(DialogInterface dialog,int which)
-    {
-
-        play.addTo(play.get_user(play.game.userId).getPosition(), Integer.parseInt(money_input.getText().toString()));
-        updateFrame();
-        play.updateUserId();
-    }*/
 
     public Dialog onCreateDialog(Bundle save)
     {
@@ -277,11 +270,6 @@ public class GameActivity extends Activity implements View.OnClickListener
         imageViews[user0_position].setImageResource(R.drawable.player0);
         imageViews[user1_position].setImageResource(R.drawable.player1);
 
-        /*Log.i("aa", userId + "");
-        Log.i("aa",user.cash+"");
-        Log.i("aa",user.assets+"");
-        Log.i("aa",userId+"");
-        Log.i("aa","------------");*/
     }
 
 
