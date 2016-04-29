@@ -18,7 +18,7 @@ public class MyActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aaa);
-        Intent MyIntent=new Intent(MyActivity.this,socketTestActivity.class);
+        Intent MyIntent=new Intent(MyActivity.this,MainActivity.class);
         startActivity(MyIntent);
         finish();
     }
