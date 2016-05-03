@@ -1,9 +1,11 @@
 package com.example.DouDiGame.netEntity;
 
+import java.io.Serializable;
+
 /**
  * Created by viv on 16-4-26.
  */
-public class Message {
+public class Message implements Serializable{
 
     /*标记信息用途*/
     String forWhat;

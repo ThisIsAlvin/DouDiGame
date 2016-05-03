@@ -6,6 +6,9 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.preference.DialogPreference;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -19,11 +22,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.DouDiGame.Config;
 import com.example.DouDiGame.R;
 import com.example.DouDiGame.model.User;
+import com.example.DouDiGame.service.NetService;
 import com.example.DouDiGame.service.Play;
 
-import java.util.logging.Handler;
 
 /**
  * Created by 何锦源 on 2016/4/19.
@@ -44,6 +48,8 @@ public class GameActivity extends Activity implements View.OnClickListener
     private EditText money_input;
     private ImageView[] imageViews=new ImageView[60];
     private static Play play;
+    private com.example.DouDiGame.netEntity.Message message;
+    private String roomName;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -122,6 +128,12 @@ public class GameActivity extends Activity implements View.OnClickListener
         }
 
         updateFrame();
+        roomName=getIntent().getStringExtra("roomName");
+        GameHandler gameHandler=new GameHandler();
+        NetService.getNetService().setGameHandler(gameHandler);
+        message=new com.example.DouDiGame.netEntity.Message();
+        message.setForWhat(Config.START_INIT_DATA);
+        message.setData(roomName);
     }
 
     public void onClick(View view)
@@ -272,5 +284,15 @@ public class GameActivity extends Activity implements View.OnClickListener
 
     }
 
+    class GameHandler extends Handler
+    {
+        public GameHandler(){}
 
+        public GameHandler(Looper l){super(l);}
+
+        public void handleMessage(Message msg)
+        {
+
+        }
+    }
 }

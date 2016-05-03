@@ -25,7 +25,9 @@
         <activity android:name=".activity.LobbyActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        <activity android:name=".activity.RoomActivity" />
+        <activity android:name=".activity.RoomActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>/>
         <activity android:name=".activity.socketTestActivity"/>
     </application>
 </manifest>
