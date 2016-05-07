@@ -7,7 +7,7 @@ public class Config {
 
     /*网络环境信息*/
     /*ip地址*/
-    public static final String IP = "192.168.1.107";
+    public static final String IP = "192.168.1.103";
     /*端口*/
     public static final Integer PORT = 10801;
     /*编码类型*/
