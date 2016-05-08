@@ -46,6 +46,7 @@ public class Room {
         /*判断该玩家不在这个房间*/
         if (!players.contains(gamePlayer)) {
             players.add(gamePlayer);
+            gamePlayer.room = this;
             /*通知房间所有用户更新房间数据*/
             Message message = new Message();
             message.setForWhat(Config.ROOMER_UPDATE_ROOM);
@@ -58,6 +59,7 @@ public class Room {
         /*判断该玩家在这个房间*/
         if (players.contains(gamePlayer)) {
             players.remove(gamePlayer);
+            gamePlayer = null;
              /*通知房间所有用户更新房间数据*/
             Message message = new Message();
             message.setForWhat(Config.ROOMER_UPDATE_ROOM);
@@ -126,6 +128,84 @@ public class Room {
                         players) {
                     gp.bw.write(line + "\n");
                     gp.bw.flush();
+                }
+                break;
+            }
+            case Config.PLAY_RESULT:{
+                /*通知房间所有人更新投掷色子点数*/
+                GameMessage gameMessage = new GameMessage();
+                gameMessage.setPlayerName(gameData.dealPlayer.playerName);
+                gameMessage.setCash(gameData.dealPlayer.cash);
+                gameMessage.setLand(gameData.dealPlayer.land);
+                gameMessage.setDirection(gameData.dealPlayer.direction);
+                gameMessage.setAddress(gameData.dealPlayer.geziId);
+                gameMessage.setNum(gameData.num);
+                gameMessage.setDealer(gameData.dealPlayer.playerName);
+                String dateJson = mapper.writeValueAsString(gameMessage);
+                message.setDoSomething(Config.SUCCESS);
+                message.setData(dateJson);
+                line = mapper.writeValueAsString(message);
+                for (GamePlayer gp :
+                        players) {
+                    gp.bw.write(line + "\n");
+                    gp.bw.flush();
+                }
+                break;
+            }
+            case Config.DEAL_RESULT:{
+                /*处理操作结果*/
+                switch (message.getDoSomething()) {
+                    case Config.OVER:{
+                        /*结束游戏*/
+                        line = mapper.writeValueAsString(message);
+                        for (GamePlayer gp :
+                                players) {
+                            gp.bw.write(line + "\n");
+                            gp.bw.flush();
+                        }
+                        break;
+                    }
+                    case Config.LOSER:{
+                        /*破产*/
+                        GameMessage gameMessage = new GameMessage();
+                        RoomPlayer player = gameData.dealPlayer;
+                        gameMessage.setPlayerName(player.playerName);
+                        gameMessage.setCash(player.cash);
+                        gameMessage.setLand(player.land);
+                        gameMessage.setDirection(player.direction);
+                        gameMessage.setAddress(player.geziId);
+                        gameMessage.setDealer(gameData.dealPlayer.playerName);
+                        String dateJson = mapper.writeValueAsString(gameMessage);
+                        message.setDoSomething(Config.LOSER);
+                        message.setData(dateJson);
+                        line = mapper.writeValueAsString(message);
+                        for (GamePlayer gp :
+                                players) {
+                            gp.bw.write(line + "\n");
+                            gp.bw.flush();
+                        }
+                        break;
+                    }
+                    default:{
+                        GameMessage gameMessage = new GameMessage();
+                        RoomPlayer player = gameData.dealPlayer;
+                        gameMessage.setPlayerName(player.playerName);
+                        gameMessage.setCash(player.cash);
+                        gameMessage.setLand(player.land);
+                        gameMessage.setDirection(player.direction);
+                        gameMessage.setAddress(player.geziId);
+                        gameMessage.setDealer(gameData.dealPlayer.playerName);
+                        String dateJson = mapper.writeValueAsString(gameMessage);
+                        message.setDoSomething(Config.SUCCESS);
+                        message.setData(dateJson);
+                        line = mapper.writeValueAsString(message);
+                        for (GamePlayer gp :
+                                players) {
+                            gp.bw.write(line + "\n");
+                            gp.bw.flush();
+                        }
+                        break;
+                    }
                 }
                 break;
             }

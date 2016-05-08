@@ -25,7 +25,7 @@ public class GameData {
     public RoomPlayer dealPlayer;
 
     /*当前产生的随机数*/
-    public int num;
+    public Integer num;
 
     /*地图格子*/
     public ArrayList<GameGezi> gameGezis;
@@ -46,25 +46,38 @@ public class GameData {
         this.gameGezis = new ArrayList<GameGezi>();
         this.roomPlayers = new ArrayList<RoomPlayer>();
 
-        /*初始化玩家*/
-        String direction = Config.DIRECTION_RIGHT;
-        for (GamePlayer gp :
-                players) {
-            roomPlayers.add(new RoomPlayer(gp,direction));
-        }
         /*初始化地图*/
         for (int i = 0; i < Config.GEZHI_NUM; i++) {
             gameGezis.add(new GameGezi());
         }
+        /*初始化玩家*/
+        String direction_right = Config.DIRECTION_RIGHT;
+        String direction_left = Config.DIRECTION_LEFT;
+        boolean direction_ = true;
+        for (GamePlayer gp :
+                players) {
+            if (direction_) {
+                int bb = (int)(Math.random()*(59-1+1));
+                roomPlayers.add(new RoomPlayer(gp, direction_right,gameGezis.get(bb),bb));
+                direction_ = false;
+            } else {
+                int bb = (int)(Math.random()*(59-1+1));
+                roomPlayers.add(new RoomPlayer(gp, direction_left,gameGezis.get(bb),bb));
+                direction_ = true;
+            }
+        }
         /*初始化玩家位置*/
         for (int i = 0; i < roomPlayers.size(); i++) {
-            gameGezis.get(i).roomPlayers.add(roomPlayers.get(i));
+            roomPlayers.get(i).gezi.roomPlayers.add(roomPlayers.get(i));
+
         }
         /*操作权持有者*/
         dealPlayer = roomPlayers.get(0);
 
 
     }
+
+
 
 
 }

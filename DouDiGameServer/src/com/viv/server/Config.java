@@ -36,6 +36,11 @@ public class Config {
     /*游戏操作：购买土地/追加投资/扣钱*/
     public static final String DEAL = "deal";
 
+    /*doSomething通信数据类型标记client-------> server*/
+    public static final String DEAL_BUY = "deal_buy";
+    public static final String DEAL_ADD = "deal_add";
+    public static final String DEAL_LOSS = "deal_loss";
+
     /*forWhat通信数据类型标记server----->client*/
     /*登录结果通知*/
     public static final String LOGIN_STATUS = "login_status";
@@ -57,6 +62,10 @@ public class Config {
     public static final String PLAY_RESULT = "play_result";
     /*游戏操作结果*/
     public static final String DEAL_RESULT = "deal_result";
+
+    /*doSomething标示 server---->client*/
+    public static final String OVER = "over";
+    public static final String LOSER = "loser";
 
     /*forWhat常用的通知 server----> client*/
     /*所有等待的用户更新大厅数据*/

@@ -2,6 +2,8 @@ package com.viv.server.service;
 
 import com.viv.server.Config;
 import com.viv.server.controller.SocketManager;
+import com.viv.server.entity.GameGezi;
+import com.viv.server.entity.RoomPlayer;
 import com.viv.server.netEntity.ClassRoom;
 import com.viv.server.netEntity.Message;
 import com.viv.server.entity.Room;
@@ -10,6 +12,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -87,6 +90,16 @@ public class GamePlayer extends Thread{
                             out_room();
                             break;
                         }
+                        case Config.PLAY:{
+                            /*投掷色子*/
+                            play_game();
+                            break;
+                        }
+                        case Config.DEAL:{
+                            /*处理游戏操作*/
+                            deal();
+                            break;
+                        }
                         default:
                             break;
                     }
@@ -105,6 +118,20 @@ public class GamePlayer extends Thread{
         try {
             /*判断用户是否链接却未登录*/
             if (manager.getConnect().contains(this)){
+                /*查询该用户名是否已使用*/
+                Vector<GamePlayer> gamePlayers = manager.getConnect();
+                for (GamePlayer g :
+                        gamePlayers) {
+                    if (player_name.equals(g.playerName)) {
+                        message = new Message();
+                        message.setForWhat(Config.LOGIN_STATUS);
+                        message.setDoSomething(Config.FAIL);
+                        line = mapper.writeValueAsString(message);
+                        bw.write(line + "\n");
+                        bw.flush();
+                        return;
+                    }
+                }
             /*记录用户名*/
                 playerName = player_name;
             /*将用户从connect---->wait*/
@@ -412,5 +439,209 @@ public class GamePlayer extends Thread{
             e.printStackTrace();
         }
 
+    }
+
+    /*投掷色子操作*/
+    private void play_game() {
+        System.out.println("投掷色子数据："+message.getDoSomething()+"； 数据："+message.getData());
+        System.out.println("----------------------");
+        message = new Message();
+        try{
+            /*判断用户是否开始游戏*/
+            if (manager.getPlaying().contains(this)) {
+                /*判断房间数据是否存在 同时存在操作权*/
+                if (room != null && room.getGameData().num == null && room.getGameData().dealPlayer.gamePlayer == this) {
+                    room.getGameData().num = (int)(1+Math.random()*(6-1+1));
+                    /*游戏操作*/
+                    room.getGameData().dealPlayer.move(room.getGameData().num);
+                    /*通知房间的玩家更新数据*/
+                    message.setForWhat(Config.PLAY_RESULT);
+                    room.notifyAllPlayer(message);
+                }
+            }
+            message.setForWhat(Config.PLAY_RESULT);
+            message.setDoSomething(Config.FAIL);
+            line = mapper.writeValueAsString(message);
+            bw.write(line + "\n");
+            bw.flush();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*处理游戏操作*/
+    private void deal() {
+        System.out.println("处理游戏操作数据："+message.getDoSomething()+"； 数据："+message.getData());
+        System.out.println("----------------------");
+        String gameDeal = message.getDoSomething();
+        Integer addMoney = 0;
+        if (message.getData() != null) {
+           addMoney  = Integer.parseInt(message.getData()) ;
+        }
+        message = new Message();
+        try{
+            /*判断用户是否开始游戏*/
+            if (manager.getPlaying().contains(this)) {
+                /*判断房间数据是否存在 同时存在操作权*/
+                if (room != null && room.getGameData().num != null && room.getGameData().dealPlayer.gamePlayer == this) {
+                    /*检查操作标示合法性*/
+                    RoomPlayer player = room.getGameData().dealPlayer;
+                    GameGezi gezi = room.getGameData().gameGezis.get(room.getGameData().dealPlayer.geziId);
+                    boolean dealResult = false;
+                    switch (gameDeal) {
+                        case Config.DEAL_BUY:{
+                            /*购买土地*/
+                                /*空土地*/
+                            if (gezi.geziHost == null) {
+                                /*够不够钱*/
+                                if (gezi.price <= player.cash) {
+                                    player.cash -= gezi.price;
+                                    player.land +=gezi.price;
+                                    gezi.geziHost = player;
+                                    message.setForWhat(Config.DEAL_RESULT);
+                                    dealResult = true;
+                                }
+                            }
+                            break;
+                        }
+                        case Config.DEAL_ADD:{
+                            /*追加投资*/
+                                /*自己土地*/
+                            if (gezi.geziHost == player) {
+                                if (player.cash >= addMoney) {
+                                    player.cash -= addMoney;
+                                    player.land += addMoney;
+                                    message.setForWhat(Config.DEAL_RESULT);
+                                    dealResult = true;
+                                }
+                            }
+                            break;
+                        }
+                        case Config.DEAL_LOSS:{
+                            /*扣钱*/
+                            if (gezi.geziHost != null && gezi.geziHost != player) {
+                                if (player.cash >= gezi.price * Config.GEZHI_RATE) {
+                                    player.cash -= (gezi.price * Config.GEZHI_RATE);
+                                    gezi.geziHost.cash += (gezi.price * Config.GEZHI_RATE);
+                                    message.setForWhat(Config.DEAL_RESULT);
+                                } else {
+                                    /*破产*/
+                                    for (GameGezi gg :
+                                            room.getGameData().gameGezis) {
+                                        if (gg.geziHost == player) {
+                                            gg.geziHost = null;
+                                        }
+                                    }
+                                    player.land = -1;
+                                    message.setForWhat(Config.DEAL_RESULT);
+                                    message.setDoSomething(Config.LOSER);
+                                }
+                                dealResult = true;
+                            }
+                            break;
+                        }
+                        default:return;
+
+                    }
+                    if (!dealResult) {
+                        return;
+                    }
+
+                    /*棋局判断*/
+                    if (room.getGameData().time <= 0) {
+                        RoomPlayer winner = room.getGameData().roomPlayers.get(0);
+                        List<RoomPlayer> rps = room.getGameData().roomPlayers;
+                        for (int i = 1; i < rps.size(); i++) {
+                            if ((rps.get(i).cash + rps.get(i).land) > (winner.cash + winner.land)) {
+                                winner = rps.get(i);
+                            }
+                        }
+                        message.setForWhat(Config.DEAL_RESULT);
+                        message.setDoSomething(Config.OVER);
+                        message.setData(winner.playerName);
+                        /*通知房间的玩家更新数据*/
+                        room.notifyAllPlayer(message);
+                        return;
+                    }
+
+                    /*移交控制权*/
+                    List<RoomPlayer> rps = room.getGameData().roomPlayers;
+                    for (int i = 0; i < rps.size(); i++) {
+                        if (rps.get(i) == room.getGameData().dealPlayer) {
+                            int j = i+1;
+                            if (j < rps.size()) {
+                                while (rps.get(j).land == -1) {
+                                    j++;
+                                    if (j >= rps.size()) {
+                                        j = 0;
+                                    }
+                                    if (j == i) {
+                                        /*其他玩家都破产了*/
+                                        message.setForWhat(Config.DEAL_RESULT);
+                                        message.setDoSomething(Config.OVER);
+                                        message.setData(playerName);
+                                        /*通知房间的玩家更新数据*/
+                                        room.notifyAllPlayer(message);
+                                        return;
+                                    }
+                                }
+                            } else {
+                                j = 0;
+                                while (rps.get(j).land == -1) {
+                                    j++;
+                                    if (j >= rps.size()) {
+                                        j = 0;
+                                    }
+                                    if (j == i) {
+                                        /*其他玩家都破产了*/
+                                        message.setForWhat(Config.DEAL_RESULT);
+                                        message.setDoSomething(Config.OVER);
+                                        message.setData(player.playerName);
+                                        /*通知房间的玩家更新数据*/
+                                        room.notifyAllPlayer(message);
+                                        return;
+                                    }
+                                }
+                            }
+                                room.getGameData().dealPlayer = rps.get(j);
+
+                                /*更新棋局*/
+                                room.getGameData().time--;
+                                /*土地涨价*/
+                                for (GameGezi gg :
+                                        room.getGameData().gameGezis) {
+                                    gg.price += (gg.price * Config.GEZHI_RATE);
+                                }
+                                for (RoomPlayer rp :
+                                        room.getGameData().roomPlayers) {
+                                    rp.land += (rp.land * Config.GEZHI_RATE);
+                                }
+
+                            break;
+                        }
+                    }
+
+                    room.getGameData().num = null;
+
+
+                    /*通知房间的玩家更新数据*/
+                    message.setForWhat(Config.DEAL_RESULT);
+                    message.setDoSomething("");
+                    room.notifyAllPlayer(message);
+
+                    return;
+
+                }
+            }
+            message.setForWhat(Config.PLAY_RESULT);
+            message.setDoSomething(Config.FAIL);
+            line = mapper.writeValueAsString(message);
+            bw.write(line + "\n");
+            bw.flush();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

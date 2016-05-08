@@ -42,7 +42,7 @@ public class SocketManager {
     /*登录玩家进入大厅或者房间等待游戏开始*/
     public void connect2wait(GamePlayer gamePlayer) {
         synchronized (GamePlayer.class) {
-            if (connect.remove(gamePlayer)) {
+            if (connect.contains(gamePlayer) && !wait.contains(gamePlayer)) {
                 wait.add(gamePlayer);
             }
         }
